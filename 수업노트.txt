@@ -1,0 +1,187 @@
+<<<<<<< HEAD
+
+
+ docs/contstitutiont
+
+Select-String -Path specs/001-todo-cli/spec.md -Pattern "NEEDS CLARIFICATION"
+
+git add specs/001-todo-cli .specify/feature.json
+git merge --no-ff 001-todo-cli -m "merge: feature spec"
+
+
+- sdd tookit :speckit 
+constitution ->specify -> clarify ->plan->task -> analyze ->implementation(only AI)
+                     test AC                          2~3시간
+                           SC                          정도 분량이 phase하나
+
+
+specs/001-todo-cli/spec.md의 [NEEDS CLARIFICATION] 항목들을 하나씩 해소하고자 해.
+각 항목에 대해 선택지를 제시해 주고, 내가 선택하면 spec.md를 업데이트해줘.
+
+
+
+specs/001-todo-cli/spec.md를 기반으로 구현 계획을 작성해줘.
+[constitution 원칙 1 - 레이어 분리]
+레이어 구조:
+- 비즈니스 레이어: todo_lib/ 폴더 (독립 패키지)
+- CLI 레이어: cli/ 폴더 (todo_lib 호출만 담당)
+- 테스트: tests/ 폴더
+
+[constitution 원칙 2 - 테스트 우선]
+테스트 도구:
+- 테스트 프레임워크: pytest
+- 커버리지 측정: pytest-cov
+
+[constitution 원칙 3 - 최소 의존성]
+사용할 패키지 (최소 한도):
+- 런타임: typer, sqlalchemy
+- 개발(dev): pytest, pytest-cov
+- 이 목록 외 패키지는 추가하지 않는다
+
+[constitution 원칙 4 - 단순함 우선]
+구현 방식:
+- 추상 인터페이스(예: ITodoRepository) 사용 금지
+- 단순 함수와 클래스로 직접 구현
+
+[constitution 원칙 5 - CLI 도구]
+CLI 명령어 인터페이스:
+- todo add "<제목>" [--due YYYY-MM-DD] [--priority high|medium|low]
+- todo list [--filter done|pending] [--priority high|medium|low]
+- todo done <id>
+- todo delete <id>
+
+언어: Python 3.12
+패키지 관리: uv
+데이터 저장소: SQLite (로컬 파일기반, 서버 불필요)
+
+/speckit.tasks
+
+specs/001-todo-cli/plan.md를 기반으로 실행 가능한 태스크 목록을 생성해줘.
+각 태스크는 하나의 커밋 단위가 되도록 분해해줘.
+병렬 실행 가능한 태스크는 [P] 마커를 붙여줘.
+
+
+
+/speckit.analyze
+
+specs/001-todo-cli/ 안의 모든 아티팩트를 코드 생성 전 종합 분석해 주세요.
+
+다음 항목을 준수하여 보고해 주세요:
+1. constitution.md 원칙 준수 여부 (spec, plan, tasks 전체)
+2. spec.md의 AC가 tasks.md에 모두 반영되어 있는지 (coverage gap)
+3. plan.md와 spec.md 간 기술 선택이 일치하는지
+4. tasks.md의 태스크가 spec AC를 모두 커버하는지
+
+
+==== 테스트 하기 ====
+uv run todo add "문서 초안 작성"
+uv run todo list
+uv run todo done 1
+uv run todo list
+uv run todo delete 1
+uv run todo list
+
+
+================
+GreenField vs.  BrownField(specify부터 시작 - branch자동생성하고 spec.md부터 시작 - 변경시에는 사용자의도로 branch는 만들지 말고 기존 spec을 사용해줘라는 프럼프트 반영해도 된다.  speckit에 update없어성 단, AC/SC 기준이 바뀌면 테스트가 바뀌는 거라 브랜치는 다시 만드는게 맞다!!!! )
+신규               legacy에 변경이나 추가
+                    (회귀 문제 해결해야8 - regression  test - TDD Test First전략사용)
+                    추가할 때 specs/branch/가 생성되고 specify(spec) 사용
+
+
+
+
+=======
+
+
+ docs/contstitutiont
+
+Select-String -Path specs/001-todo-cli/spec.md -Pattern "NEEDS CLARIFICATION"
+
+git add specs/001-todo-cli .specify/feature.json
+git merge --no-ff 001-todo-cli -m "merge: feature spec"
+
+
+- sdd tookit :speckit 
+constitution ->specify -> clarify ->plan->task -> analyze ->implementation(only AI)
+                     test AC                          2~3시간
+                           SC                          정도 분량이 phase하나
+
+
+specs/001-todo-cli/spec.md의 [NEEDS CLARIFICATION] 항목들을 하나씩 해소하고자 해.
+각 항목에 대해 선택지를 제시해 주고, 내가 선택하면 spec.md를 업데이트해줘.
+
+
+
+specs/001-todo-cli/spec.md를 기반으로 구현 계획을 작성해줘.
+[constitution 원칙 1 - 레이어 분리]
+레이어 구조:
+- 비즈니스 레이어: todo_lib/ 폴더 (독립 패키지)
+- CLI 레이어: cli/ 폴더 (todo_lib 호출만 담당)
+- 테스트: tests/ 폴더
+
+[constitution 원칙 2 - 테스트 우선]
+테스트 도구:
+- 테스트 프레임워크: pytest
+- 커버리지 측정: pytest-cov
+
+[constitution 원칙 3 - 최소 의존성]
+사용할 패키지 (최소 한도):
+- 런타임: typer, sqlalchemy
+- 개발(dev): pytest, pytest-cov
+- 이 목록 외 패키지는 추가하지 않는다
+
+[constitution 원칙 4 - 단순함 우선]
+구현 방식:
+- 추상 인터페이스(예: ITodoRepository) 사용 금지
+- 단순 함수와 클래스로 직접 구현
+
+[constitution 원칙 5 - CLI 도구]
+CLI 명령어 인터페이스:
+- todo add "<제목>" [--due YYYY-MM-DD] [--priority high|medium|low]
+- todo list [--filter done|pending] [--priority high|medium|low]
+- todo done <id>
+- todo delete <id>
+
+언어: Python 3.12
+패키지 관리: uv
+데이터 저장소: SQLite (로컬 파일기반, 서버 불필요)
+
+/speckit.tasks
+
+specs/001-todo-cli/plan.md를 기반으로 실행 가능한 태스크 목록을 생성해줘.
+각 태스크는 하나의 커밋 단위가 되도록 분해해줘.
+병렬 실행 가능한 태스크는 [P] 마커를 붙여줘.
+
+
+
+/speckit.analyze
+
+specs/001-todo-cli/ 안의 모든 아티팩트를 코드 생성 전 종합 분석해 주세요.
+
+다음 항목을 준수하여 보고해 주세요:
+1. constitution.md 원칙 준수 여부 (spec, plan, tasks 전체)
+2. spec.md의 AC가 tasks.md에 모두 반영되어 있는지 (coverage gap)
+3. plan.md와 spec.md 간 기술 선택이 일치하는지
+4. tasks.md의 태스크가 spec AC를 모두 커버하는지
+
+
+==== 테스트 하기 ====
+uv run todo add "문서 초안 작성"
+uv run todo list
+uv run todo done 1
+uv run todo list
+uv run todo delete 1
+uv run todo list
+
+
+================
+GreenField vs.  BrownField(specify부터 시작 - branch자동생성하고 spec.md부터 시작 - 변경시에는 사용자의도로 branch는 만들지 말고 기존 spec을 사용해줘라는 프럼프트 반영해도 된다.  speckit에 update없어성 단, AC/SC 기준이 바뀌면 테스트가 바뀌는 거라 브랜치는 다시 만드는게 맞다!!!! )
+신규               legacy에 변경이나 추가
+                    (회귀 문제 해결해야8 - regression  test - TDD Test First전략사용)
+                    추가할 때 specs/branch/가 생성되고 specify(spec) 사용
+
+
+
+
+>>>>>>> c854c40deec324e4f00c6ded053a5d523641e510
